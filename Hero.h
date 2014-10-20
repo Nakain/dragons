@@ -11,9 +11,31 @@ public:
     Hero(int health = default_health, int aForce = default_attackForce)
         :Unit(health, aForce), scores(0)
     {}
-    void attack (Dragon &drago); //атаковать дракона
-    void addScores(int _scores); //добавить счет
-    int getScores(); //показать счет
+    void attack (Dragon &drago)
+    {
+        string q = drago.getQuest();
+        cout << q;
+        int answer;
+        cin >> answer;
+        if (drago.checkAnswer(answer))
+        {
+            drago.getDamage(attackForce);
+            cout << "Hit you, dragon!" << endl;
+        }
+        else
+        {
+            getDamage(drago.attackForce);
+            cout << "Hero suffers..." << endl;
+        }
+    }
+    void addScores(int _scores)
+    {
+        scores += _scores;
+    }
+    int getScores()
+    {
+        return scores;
+    }
 };
 
 #endif // HERO_H
