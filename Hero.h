@@ -1,6 +1,9 @@
 #ifndef HERO_H
 #define HERO_H
 
+#include "Unit.h"
+#include "Dragon.h"
+
 class Hero: public Unit
 {
     int scores;

@@ -1,4 +1,7 @@
-#include"Dragon.h"
+#include "Dragon.h"
+
+#include <cstdlib>
+#include <sstream>
 
 using namespace std;
 

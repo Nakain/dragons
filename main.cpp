@@ -1,11 +1,8 @@
 #include <iostream>
-#include <sstream>
-#include <cstdlib>
 
 #include "Unit.h"
 #include "Dragon.h"
 #include "Hero.h"
-
 
 using namespace std;
 

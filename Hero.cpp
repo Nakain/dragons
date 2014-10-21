@@ -1,4 +1,6 @@
-#include"Hero.h"
+#include "Hero.h"
+
+#include <iostream>
 
 using namespace std;
 
