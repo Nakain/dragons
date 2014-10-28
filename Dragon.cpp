@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string Dragon::getQuest()
+string GreenDragon::getQuest()
 {
     int left = 1 + rand()%100;
     int right = 1 + rand()%100;
@@ -13,6 +13,26 @@ string Dragon::getQuest()
     stringstream question;
     question << left << " + " << right << ": ";
     my_answer = left + right;
+    return question.str();
+}
+string RedDragon::getQuest()
+{
+    int left = 1 + rand()%50;
+    int right = 1 + rand()%50;
+
+    stringstream question;
+    question << left << " - " << right << ": ";
+    my_answer = left - right;
+    return question.str();
+}
+string BlackDragon::getQuest()
+{
+    int left = 1 + rand()%10;
+    int right = 1 + rand()%10;
+
+    stringstream question;
+    question << left << " * " << right << ": ";
+    my_answer = left * right;
     return question.str();
 }
 bool Dragon::checkAnswer(int answer) const

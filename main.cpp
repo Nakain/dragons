@@ -7,6 +7,17 @@
 
 using namespace std;
 
+bool simple(int a)
+{
+    if (a == 2) {
+        return 1;}
+    if (a == 0 || a == 1 || a % 2 == 0) {
+        return 0;}
+    for (int i = 3; (i*i <= a)&&(a%i); i += 2)
+        {
+        return (i*i>a);}
+}
+
 void showHealth(const Hero &hero, const Dragon &dragon)
 {
     cout << "Hero health: " << hero.getHealth()

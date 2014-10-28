@@ -16,9 +16,9 @@ public:
     Dragon(std::string color, int start_health, int _attackForce)
         :Unit(start_health, _attackForce), my_color(color)
     {} //Конструктор
-    virtual std::string getQuest()=0; // получить вопрос
-    bool checkAnswer(int) const; // проверить ответ
-    std::string color() const; //вернуть цвет
+    virtual std::string getQuest() = 0;
+    bool checkAnswer(int) const;
+    std::string color() const;
 };
 
 class GreenDragon: public Dragon
@@ -30,16 +30,7 @@ public:
                           c_greenDragonHealth,
                           c_greenDragonAttack)
     {}
-    string getQuest()
-    {
-        int left = 1 + rand()%100;
-        int right = 1 + rand()%100;
-
-        stringstream question;
-        question << left << " + " << right << ": ";
-        my_answer = left + right;
-        return question.str();
-    }
+    string getQuest();
 };
 
 class RedDragon: public Dragon
@@ -51,16 +42,7 @@ public:
                           c_redDragonHealth,
                           c_redDragonAttack)
     {}
-    string getQuest()
-    {
-        int left = 1 + rand()%50;
-        int right = 1 + rand()%50;
-
-        stringstream question;
-        question << left << " - " << right << ": ";
-        my_answer = left - right;
-        return question.str();
-    }
+    string getQuest();
 };
 
 class BlackDragon: public Dragon
@@ -72,15 +54,6 @@ public:
                           c_blackDragonHealth,
                           c_blackDragonAttack)
     {}
-    string getQuest()
-    {
-        int left = 1 + rand()%10;
-        int right = 1 + rand()%10;
-
-        stringstream question;
-        question << left << " * " << right << ": ";
-        my_answer = left * right;
-        return question.str();
-    }
+    string getQuest();
 };
 #endif // DRAGON_H
