@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 
 #include "Unit.h"
 #include "Dragon.h"
@@ -12,18 +13,20 @@ void showHealth(const Hero &hero, const Dragon &dragon)
         << ", Dragon health: " << dragon.getHealth() << endl;
 }
 
-void playGame()
+void playGame(list<Dragon*> &dragonList)
 {
     Hero hero;
     bool gameOver = false;
-    for (int round = 0; round < 3; round++)
+    for (list<Dragon*>::iterator dragon = dragonList.begin();
+            dragon != dragonList.end(); dragon++)
     {
-        Dragon dragon("Green", 100, 10);
-        cout << "You have met a new " << dragon.color() << " dragon. Fight!" << endl;
 
-        while (dragon.isAlive() && hero.isAlive())
+        cout << "You have met a new " << (*dragon)->color()
+                << " dragon. Fight!" << endl;
+
+        while ((*dragon)->isAlive() && hero.isAlive())
         {
-            hero.attack(dragon);
+            hero.attack(**dragon);
         }
         if (!hero.isAlive())
         {
@@ -46,9 +49,19 @@ void playGame()
     }
 }
 
+list<Dragon*> generateDragonList()
+{
+    list<Dragon*> dragonList;
+    dragonList.push_back(new GreenDragon());
+    dragonList.push_back(new RedDragon());
+    dragonList.push_back(new BlackDragon());
+
+    return dragonList;
+}
 
 int main()
 {
-    playGame();
+    list<Dragon*> dragonList = generateDragonList();
+    playGame(dragonList);
     return 0;
 }
