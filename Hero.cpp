@@ -4,20 +4,20 @@
 
 using namespace std;
 
-void Hero::attack (Dragon &drago)
+void Hero::attack (Enemy &enema)
 {
-    string q = drago.getQuest();
+    string q = enema.getQuest();
     cout << q;
     int answer;
     cin >> answer;
-    if (drago.checkAnswer(answer))
+    if (enema.checkAnswer(answer))
     {
-        drago.getDamage(attackForce);
+        enema.getDamage(attackForce);
         cout << "Hit you, dragon!" << endl;
     }
     else
     {
-        getDamage(drago.attackForce);
+        getDamage(enema.attackForce);
         cout << "Hero suffers..." << endl;
     }
 }

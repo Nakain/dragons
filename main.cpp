@@ -4,6 +4,8 @@
 #include "Unit.h"
 #include "Dragon.h"
 #include "Hero.h"
+#include "Troll.h"
+#include "Enemy.h"
 
 using namespace std;
 
@@ -24,20 +26,20 @@ void showHealth(const Hero &hero, const Dragon &dragon)
         << ", Dragon health: " << dragon.getHealth() << endl;
 }
 
-void playGame(list<Dragon*> &dragonList)
+void playGame(list<Enemy*> &enemyList)
 {
     Hero hero;
     bool gameOver = false;
-    for (list<Dragon*>::iterator dragon = dragonList.begin();
-            dragon != dragonList.end(); dragon++)
+    for (list<Enemy*>::iterator enemy = enemyList.begin();
+            enemy != enemyList.end(); enemy++)
     {
 
-        cout << "You have met a new " << (*dragon)->color()
-                << " dragon. Fight!" << endl;
+        cout << "You have met a new " //<< (*enemy)->color()
+                << " enemy. Fight!" << endl;
 
-        while ((*dragon)->isAlive() && hero.isAlive())
+        while ((*enemy)->isAlive() && hero.isAlive())
         {
-            hero.attack(**dragon);
+            hero.attack(**enemy);
         }
         if (!hero.isAlive())
         {
@@ -46,8 +48,8 @@ void playGame(list<Dragon*> &dragonList)
         }
         else // dragon was killed!
         {
-            hero.addScores(Dragon::c_killScores);
-            cout << "Ough! You have killed a dragon!" << endl;
+            hero.addScores(Enemy::c_killScores);
+            cout << "Ough! You have killed a enemy!" << endl;
         }
     }
     if (gameOver)
@@ -60,19 +62,19 @@ void playGame(list<Dragon*> &dragonList)
     }
 }
 
-list<Dragon*> generateDragonList()
+list<Enemy*> generateDragonList()
 {
-    list<Dragon*> dragonList;
-    dragonList.push_back(new GreenDragon());
-    dragonList.push_back(new RedDragon());
-    dragonList.push_back(new BlackDragon());
-
-    return dragonList;
+    list<Enemy*> enemyList;
+    enemyList.push_back(new GreenDragon());
+    enemyList.push_back(new RedDragon());
+    enemyList.push_back(new BlackDragon());
+    enemyList.push_back(new Troll());
+    return enemyList;
 }
 
 int main()
 {
-    list<Dragon*> dragonList = generateDragonList();
-    playGame(dragonList);
+    list<Enemy*> enemyList = generateDragonList();
+    playGame(enemyList);
     return 0;
 }

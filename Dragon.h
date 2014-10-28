@@ -1,22 +1,22 @@
 #ifndef DRAGON_H
 #define DRAGON_H
 
-#include "Unit.h"
+#include "enemy.h"
 #include <string>
 #include <cstdlib>
 #include <sstream>
 
-class Dragon: public Unit
+class Dragon: public Enemy
 {
 protected:
     int my_answer;
     std::string my_color;
 public:
-    static const int c_killScores = 100;
+
     Dragon(std::string color, int start_health, int _attackForce)
-        :Unit(start_health, _attackForce), my_color(color)
-    {} //Конструктор
-    virtual std::string getQuest() = 0;
+        :Enemy(start_health, _attackForce), my_color(color)
+    {}
+
     bool checkAnswer(int) const;
     std::string color() const;
 };

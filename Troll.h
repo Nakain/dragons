@@ -1,12 +1,12 @@
 #ifndef TROLL_H_INCLUDED
 #define TROLL_H_INCLUDED
 
-#include "Unit.h"
+#include "Enemy.h"
 #include <string>
 #include <cstdlib>
 #include <sstream>
 
-class Troll: public Unit
+class Troll: public Enemy
 {
 protected:
     static const int c_TrollHealth = 50;
@@ -14,10 +14,12 @@ protected:
     int my_answer;
 public:
     static const int c_killScores = 100;
-    Dragon(int start_health, int _attackForce)
-        :Unit(c_TrollHealth, c_TrollAttack);
+
+    Troll(int start_health, int _attackForce)
+        :Enemy(c_TrollHealth, c_TrollAttack)
     {}
-    std::string getQuest();
+
+    std::string getQuest()
     {
         int num = 1 + rand()%100;
 
@@ -26,10 +28,11 @@ public:
         my_answer = simple(mun);
         return question.str();
     }
-    bool checkAnswer(int answer) const;
+
+    bool checkAnswer(int answer) const
     {
         return answer == my_answer;
     }
 };
 
-#endif // TROLL_H_INCLUDED
+#endif

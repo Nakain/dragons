@@ -14,9 +14,9 @@ public:
     Hero(int health = default_health, int aForce = default_attackForce)
         :Unit(health, aForce), scores(0)
     {}
-    void attack (Dragon &drago); //Р°С‚Р°РєРѕРІР°С‚СЊ РґСЂР°РєРѕРЅР°
-    void addScores(int _scores); //РґРѕР±Р°РІРёС‚СЊ СЃС‡РµС‚
-    int getScores(); //РїРѕРєР°Р·Р°С‚СЊ СЃС‡РµС‚
+    void attack (Enemy &enema); //атаковать врага
+    void addScores(int _scores); //добавить счет
+    int getScores(); //показать счет
 };
 
 #endif // HERO_H
